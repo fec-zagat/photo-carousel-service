@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "photo-carousel",
   "version": "",
   "description": "",
   "author": "",
@@ -8,18 +8,40 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack -d -w"
+    "build": "webpack -d -w",
+    "test": "jest",
+    "husky": {
+      "hooks": {
+      "pre-commit": "npm test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      }
+    }
   },
-  "dependencies": {},
+
+
+  "dependencies": {
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.5",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
+    "pretty-quick": "^1.10.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"

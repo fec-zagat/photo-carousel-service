@@ -1,14 +1,14 @@
 import React from 'react';
 
 class PhotoCarousel extends React.Component {
-  constructor () {
-    super()
+  constructor() {
+    super();
   }
 
   render() {
     return (
       <h1>Hello World!</h1>
-    )
+    );
   }
 }
 
