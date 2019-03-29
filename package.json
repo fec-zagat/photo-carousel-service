@@ -9,16 +9,15 @@
   },
   "scripts": {
     "build": "webpack -d -w",
-    "test": "jest",
-    "husky": {
-      "hooks": {
-      "pre-commit": "npm test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-      }
-    }
+    "test": "jest"
   },
-
-
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "pretty-quick --staged",
+      "eslint /src --fix .",
+      "git add"
+    ]
+  },
   "dependencies": {
     "react": "^16.8.5",
     "react-dom": "^16.8.5"
@@ -27,8 +26,10 @@
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.5",
+    "babel-preset-airbnb": "^3.2.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.15.3",
