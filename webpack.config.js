@@ -7,18 +7,15 @@ module.exports = {
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     path: CL_DIR,
-    filename: 'bundle.js'
-  },
-  devServer: {
-    contentBase: './dist',
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
-      }
-    ]
+        use: ['babel-loader'],
+      },
+    ],
   },
 };
