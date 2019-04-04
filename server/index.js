@@ -1,10 +1,13 @@
 /* eslint-disable no-console */
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const Restaurant = require('../database/Restaurant.js');
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
