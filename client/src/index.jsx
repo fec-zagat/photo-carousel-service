@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import PhotoCarousel from './components/PhotoCarousel';
 
-ReactDOM.render(<PhotoCarousel />, document.getElementById('root'));
+render(<PhotoCarousel />, document.getElementById('root'));
