@@ -21,12 +21,16 @@ export default class PhotoCarousel extends Component {
     };
   }
 
+  handleClick() {
+    alert('hello!');
+  }
+
   render() {
     const { images } = this.state;
     return (
       <div className="photos-container">
         <div className="row">
-          <Photo image={images[0]} />
+          <Photo image={images[0]} handleClick={this.handleClick} />
         </div>
         <div className="column-photo">
           <Photo image={images[1]} />
