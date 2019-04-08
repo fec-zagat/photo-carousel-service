@@ -5,7 +5,6 @@ const styles = {
   height: '1281px',
   width: '1425px',
   display: 'flex',
-  // background: '#2a5699',
   margin: '40px auto',
 };
 
@@ -34,12 +33,15 @@ export default class PhotoGrid extends Component {
   render() {
     const { images } = this.state;
     return (
-      <div className="restaurant-name">ANCHOR OYSTER BAR</div>
-      <div className="container" style={styles}>
-        {images.map((image, i) => (
-          <Pictures key={i} image={image} />
-        ))}
-      </div>
+      <React.Fragment>
+        <div className="restaurant-name">Anchor Oyster Bar</div>
+        <a className="x-button" onClick={this.props.onClose} />
+        <div className="container" style={styles}>
+          {images.map((image, i) => (
+            <Pictures key={i} image={image} />
+          ))}
+        </div>
+      </React.Fragment>
     );
   }
 }
