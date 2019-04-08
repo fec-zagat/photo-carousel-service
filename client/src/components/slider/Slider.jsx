@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Slide from './Slide';
 import Modal from './Modal';
 
@@ -24,6 +27,8 @@ export default class Slider extends Component {
       index: 0,
       showModal: false,
     };
+    this.Next = this.Next.bind(this);
+    this.Previous = this.Previous.bind(this);
   }
 
   handleClick = () => {
@@ -69,56 +74,37 @@ export default class Slider extends Component {
     const { onClose } = this.props;
     return (
       <React.Fragment>
-        <div
-          className="restaurant-name"
-          style={{ color: 'white', textAlign: 'center' }}
-        >
-          Anchor Oyster Bar
+        <div className="restaurant-name" style={{ color: 'white' }}>
+          <div style={{ 'margin-right': '2px', 'margin-top': '2px' }}>
+            Anchor Oyster Bar
+          </div>
           <div
             style={{
               display: 'flex',
               justifyContent: 'flex-end',
               alignItems: 'center',
-              float: 'right',
             }}
           >
-            <span className="number-of-slide">
-              {index + 1}
-{' '}
-of
-{' '}
-{images.length - 1}
-            </span>
-            <a className="grid-view" onClick={this.handleClick} />
+            <div className="number-of-slide">
+              {`${index + 1} of ${images.length}`}
+            </div>
+            <div className="grid-view" onClick={this.handleClick} />
             {showModal ? <Modal onClose={this.handleClickClose} /> : null}
-            <a className="x-button" onClick={onClose} />
+            <div className="x-button" onClick={onClose} />
           </div>
         </div>
         <div className="slider">
-          <div
-            className="arrows"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              zIndex: 2,
-            }}
-          >
-            <a className="previous" onClick={() => this.Previous()} />
-            <a className="next" onClick={() => this.Next()} />
-          </div>
-          <Slide images={images[index]} />
+          <Slide
+            images={images[index]}
+            next={this.Next}
+            previous={this.Previous}
+          />
         </div>
       </React.Fragment>
     );
   }
 }
 
-/*
- <button type="button" onClick={() => this.Previous()}>
-          Previous
-        </button>
-        <button type="button" onClick={() => this.Next()}>
-          Next
-        </button>
-*/
+Slider.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};

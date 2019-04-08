@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Slider from './PopUpSlider/Slider';
+import PropTypes from 'prop-types';
+import Slider from './slider/Slider';
 
 const styles = {
   position: 'absolute',
@@ -27,3 +28,7 @@ export default class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};

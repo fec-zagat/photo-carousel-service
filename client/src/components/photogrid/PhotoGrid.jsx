@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Pictures from './Pictures';
 
 const styles = {
@@ -32,16 +35,20 @@ export default class PhotoGrid extends Component {
 
   render() {
     const { images } = this.state;
+    const { onClose } = this.props;
     return (
       <React.Fragment>
         <div className="restaurant-name">Anchor Oyster Bar</div>
-        <a className="x-button" onClick={this.props.onClose} />
+        <div className="x-button" onClick={onClose} />
         <div className="container" style={styles}>
-          {images.map((image, i) => (
-            <Pictures key={i} image={image} />
+          {images.map(image => (
+            <Pictures key={image.id} image={image} />
           ))}
         </div>
       </React.Fragment>
     );
   }
 }
+PhotoGrid.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
