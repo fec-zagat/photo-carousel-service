@@ -43,28 +43,28 @@ export default class PhotoCarousel extends Component {
       <div className="photos-container">
         {showModal ? <Modal onClose={this.handleClickClose} /> : null}
         <div className="row">
-          <Photo image={images[0]} handleClick={this.handleClick} />
+          <Photo foodPhoto={images[0]} handleClick={this.handleClick} />
         </div>
         <div className="column-photo">
-          <Photo image={images[1]} />
-          <Photo image={images[2]} />
+          <Photo foodPhoto={images[1]} />
+          <Photo foodPhoto={images[2]} />
         </div>
         <div className="row">
-          <Photo image={images[3]} />
+          <Photo foodPhoto={images[3]} />
         </div>
         <div className="column-photo">
-          <Photo image={images[4]} />
-          <Photo image={images[5]} />
+          <Photo foodPhoto={images[4]} />
+          <Photo foodPhoto={images[5]} />
         </div>
         <div className="row">
-          <Photo image={images[6]} />
+          <Photo foodPhoto={images[6]} />
         </div>
         <div className="column-photo">
-          <Photo image={images[7]} />
-          <Photo image={images[8]} />
+          <Photo foodPhoto={images[7]} />
+          <Photo foodPhoto={images[8]} />
         </div>
         <div className="row">
-          <Photo image={images[9]} />
+          <Photo foodPhoto={images[9]} />
         </div>
       </div>
     );

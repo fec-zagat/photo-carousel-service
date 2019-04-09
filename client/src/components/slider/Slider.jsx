@@ -75,9 +75,7 @@ export default class Slider extends Component {
     return (
       <React.Fragment>
         <div className="restaurant-name" style={{ color: 'white' }}>
-          <div style={{ 'margin-right': '2px', 'margin-top': '2px' }}>
-            Anchor Oyster Bar
-          </div>
+          <div>Anchor Oyster Bar</div>
           <div
             style={{
               display: 'flex',

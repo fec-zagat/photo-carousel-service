@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 const Slide = (props) => {
   const { images, next, previous } = props;
   const styles = {
-    height: '500px',
-    width: '500px',
+    height: '400px',
+    width: '400px',
     backgroundImage: `url(${images})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
