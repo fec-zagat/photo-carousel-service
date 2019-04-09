@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Photo from './Photo';
 import Modal from './Modal';
+import '../../dist/style.css';
 
 export default class PhotoCarousel extends Component {
   constructor(props) {
