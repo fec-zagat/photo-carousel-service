@@ -1,0 +1,122 @@
+@font-face {
+  font-family: Calibre-Regular;
+  src: url(./assets/fonts/Calibre-Regular.ttf);
+}
+
+@font-face {
+  font-family: Calibre-Medium;
+  src: url(./assets/fonts/Calibre-Medium.ttf);
+}
+
+@font-face {
+  font-family: Calibre-Light;
+  src: url(./assets/fonts/Calibre-Light.ttf);
+}
+
+.photos-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container {
+  flex-flow: row wrap;
+  overflow: scroll;
+}
+
+.restaurant-name {
+  display: flex;
+  justify-content: center;
+  margin: 28px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.086em;
+  font: 18px/20px 'Calibre-Medium';
+}
+
+.grid-pictures {
+  margin: 3px;
+  margin-bottom: 5px;
+}
+
+.column-photo img {
+  height: 190px;
+  width: 190px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.photo {
+  height: 385px;
+  width: 385px;
+  margin: 3px;
+  transition: transform 0.3s;
+}
+
+.photo:hover {
+  cursor: pointer;
+  opacity: 0.95;
+  transform: scale(1.01);
+}
+
+.x-button {
+  display: block;
+  text-indent: -9999px;
+  width: 35.07px;
+  height: 35.07px;
+  background: url(./assets/xbutton.svg);
+  background-size: 35.07px 35.07px;
+}
+
+.x-button:hover {
+  cursor: pointer;
+}
+
+.grid-view {
+  display: inline-block;
+  text-indent: -9999px;
+  width: 24px;
+  height: 32px;
+  background: url(./assets/grid.svg);
+  background-size: 24px 32px;
+  vertical-align: middle;
+  border-right: 1px solid #656666;
+  cursor: pointer;
+  margin: 4px 11px 4px 0;
+}
+
+.number-of-slide {
+  color: white;
+  margin-right: 20px;
+  text-align: left;
+  font: 15px/20px 'Calibre-Regular';
+  letter-spacing: 0.13em;
+}
+
+div.previous {
+  background: url(./assets/left-arrow.svg) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+}
+
+div.next {
+  background: url(./assets/right-arrow.svg) no-repeat top left;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+}
+
+.next:hover {
+  background-color: black;
+  border-radius: 50%;
+}
+
+.previous:hover {
+  background-color: black;
+  border-radius: 50%;
+}
