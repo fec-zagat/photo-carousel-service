@@ -1,28 +1,57 @@
 import React, { Component } from 'react';
-import Photo from './Photo';
-import Modal from './Modal';
+
+const imgStyle = {
+  height: '395px',
+  width: '395px',
+  maxWidth: '100%',
+  maxHeight: '395px',
+  margin: '3px',
+};
+
+const imgColStyle = {
+  height: '195px',
+  width: '195px',
+  maxWidth: '100%',
+  maxHeight: '195px',
+  margin: '3px',
+};
+
+const sectionStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+};
 
 export default class PhotoCarousel extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      images: [
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg',
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/canyon.jpg',
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/city.jpg',
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/desert.jpg',
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/mountains.jpg',
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/redsky.jpg',
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/sandy-shores.jpg',
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/tree-of-life.jpg',
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg',
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/city.jpg',
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/mountains.jpg',
-        'https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/redsky.jpg',
-      ],
+      mediaData: [],
       showModal: false,
     };
+    const { mediaData } = this.state;
+    this.element = document.createElement('img');
+    this.element.setAttribute('src', mediaData[2]);
+    this.element.setAttribute('height', '195');
+    this.element.setAttribute('width', '195');
+    this.element.setAttribute('style', 'margin: 3px');
+  }
+
+  // document.getElementById('smallMedia').appendChild(this.element);
+
+  componentDidMount() {
+    const path = window.location.pathname;
+    const id = path.split('-')[2].split('/')[0];
+    const endpoint = `http://localhost:3002/restaurant/${id}`;
+    fetch(endpoint)
+      .then(response => response.json())
+      .then((results) => {
+        this.setState({
+          mediaData: results.photos,
+        });
+      })
+      .catch(error => console.error(error));
   }
 
   handleClick = () => {
@@ -38,46 +67,32 @@ export default class PhotoCarousel extends Component {
   };
 
   render() {
-    const { images, showModal } = this.state;
+    const { mediaData } = this.state;
+    const media = mediaData.slice(0, 10).map((image, index) => {
+      if (index % 3 === 0) {
+        return (
+          <div className="media" style={{ minWidth: '0', margin: '2px' }}>
+            <img src={image} alt="" style={imgStyle} />
+          </div>
+        );
+      }
+      if (index % 3 === 1) {
+        return (
+          <div
+            id="smallMedia"
+            className="media-column-container"
+            style={{ minWidth: '0', margin: '2px' }}
+          >
+            <img src={image} alt="" style={imgColStyle} />
+          </div>
+        );
+      }
+    });
+
     return (
-      <div className="photos-container">
-        {showModal ? <Modal onClose={this.handleClickClose} /> : null}
-        <div className="row">
-          <Photo foodPhoto={images[0]} handleClick={this.handleClick} />
-        </div>
-        <div className="column-photo">
-          <Photo foodPhoto={images[1]} />
-          <Photo foodPhoto={images[2]} />
-        </div>
-        <div className="row">
-          <Photo foodPhoto={images[3]} />
-        </div>
-        <div className="column-photo">
-          <Photo foodPhoto={images[4]} />
-          <Photo foodPhoto={images[5]} />
-        </div>
-        <div className="row">
-          <Photo foodPhoto={images[6]} />
-        </div>
-        <div className="column-photo">
-          <Photo foodPhoto={images[7]} />
-          <Photo foodPhoto={images[8]} />
-        </div>
-        <div className="row">
-          <Photo foodPhoto={images[9]} />
-        </div>
-      </div>
+      <section className="media-container" style={sectionStyle}>
+        {media}
+      </section>
     );
   }
-
-  // render() {
-  //   const { images } = this.state;
-  //   return (
-  //     <div className="photos-container">
-  //       {images.map((image, i) => (
-  //         <Photo key={i} image={image} />
-  //       ))}
-  //     </div>
-  //   );
-  // }
 }

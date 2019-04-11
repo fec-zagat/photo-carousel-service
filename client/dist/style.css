@@ -24,6 +24,11 @@
   overflow: scroll;
 }
 
+.media-column-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .restaurant-name {
   display: flex;
   justify-content: center;

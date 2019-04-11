@@ -1,25 +1,28 @@
-/* eslint-disable no-console */
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const Restaurant = require('../database/Restaurant.js');
+const cors = require('cors');
+const db = require('../database/index');
+const { searchById } = require('../database/Restaurant');
 
 const app = express();
-
-app.use(express.static(path.join(__dirname, '../client/dist')));
-
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  '/r/:restaurants',
+  express.static(path.join(__dirname, '../client/dist')),
+);
 
-app.get('/id/:id', (req, res) => {
-  Restaurant.findById('5c9e9d340b52d24f643c655a', (err, result) => {
-    console.log(result);
+app.get('/restaurant/:id', (req, res) => {
+  searchById({ id: req.params.id }, (err, result) => {
     if (err) {
-      console.log(err);
+      res.sendStatus(400);
+    } else {
+      res.status(200).send(result);
     }
-    return res.send(result);
   });
 });
 

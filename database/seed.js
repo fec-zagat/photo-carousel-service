@@ -1,25 +1,29 @@
-const faker = require('faker');
-const Restaurant = require('./Restaurant.js');
+const { Restaurant } = require('./Restaurant.js');
 
-const sampleRestaurant = [];
+const restaurantMedia = [];
 
-const capitalize = (s) => {
-  if (typeof s !== 'string') return '';
-  return s.charAt(0).toUpperCase() + s.slice(1);
+const randomPhotoLinks = () => {
+  const linksArray = [];
+  const link =    'https://s3-us-west-1.amazonaws.com/fec-restaurant/fec-restaurant-photos/food-photo';
+  for (let i = 0; i < 20; i += 1) {
+    if (
+      !linksArray.includes(`${link}${Math.floor(Math.random() * 100) + 1}.jpg`)
+    ) {
+      linksArray.push(`${link}${Math.floor(Math.random() * 100) + 1}.jpg`);
+    }
+  }
+  return linksArray;
 };
 
 for (let i = 1; i <= 100; i += 1) {
-  sampleRestaurant.push({
-    name: `${capitalize(faker.hacker.adjective())} ${capitalize(
-      faker.hacker.noun(),
-    )}`,
-    imageUrl: faker.image.imageUrl(),
-    createdAt: faker.date.past(),
+  restaurantMedia.push({
+    id: i,
+    photos: randomPhotoLinks(),
   });
 }
 
 function insertSampleRest() {
-  Restaurant.Restaurant.create(sampleRestaurant);
+  Restaurant.create(restaurantMedia);
 }
 
 insertSampleRest();
