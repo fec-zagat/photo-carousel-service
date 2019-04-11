@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../dist/style.css';
 
 const imgStyle = {
   height: '395px',
