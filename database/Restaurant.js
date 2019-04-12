@@ -5,11 +5,19 @@ mongoose.Promise = global.Promise;
 
 const restaurantSchema = new mongoose.Schema({
   id: Number,
-  name: String,
-  imageUrl: String,
-  createdAt: String,
+  photos: Array,
 });
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
-module.exports = Restaurant;
+const searchById = (options, callback) => {
+  Restaurant.findOne(options, (err, result) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, result);
+    }
+  });
+};
+
+module.exports = { Restaurant, searchById };
