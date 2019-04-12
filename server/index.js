@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-const db = require('../database/index');
 const { searchById } = require('../database/Restaurant');
 
 const app = express();
@@ -16,20 +15,10 @@ app.use(
   express.static(path.join(__dirname, '../client/dist')),
 );
 
-// app.get('api/restaurant/:id', (req, res) => {
-//   searchById({ id: req.params.id }, (err, result) => {
-//     if (err) {
-//       res.sendStatus(500);
-//     } else {
-//       res.status(200).send(result);
-//     }
-//   });
-// });
-
-app.get('/restaurant/:id', (req, res) => {
+app.get('/api/restaurant/:id', (req, res) => {
   searchById({ id: req.params.id }, (err, result) => {
     if (err) {
-      res.sendStatus(400);
+      res.sendStatus(500);
     } else {
       res.status(200).send(result);
     }

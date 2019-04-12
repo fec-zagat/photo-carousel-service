@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Photo from './Photo';
-import Modal from './Modal';
 import '../../dist/style.css';
 
 const imgStyle = {
@@ -31,22 +29,14 @@ export default class PhotoCarousel extends Component {
 
     this.state = {
       mediaData: [],
-      showModal: false,
+      // showModal: false,
     };
-    const { mediaData } = this.state;
-    this.element = document.createElement('img');
-    this.element.setAttribute('src', mediaData[2]);
-    this.element.setAttribute('height', '195');
-    this.element.setAttribute('width', '195');
-    this.element.setAttribute('style', 'margin: 3px');
   }
-
-  // document.getElementById('smallMedia').appendChild(this.element);
 
   componentDidMount() {
     const path = window.location.pathname;
     const id = path.split('-')[2].split('/')[0];
-    const endpoint = `http://localhost:3002/restaurant/${id}`;
+    const endpoint = `/api/restaurant/${id}`;
     // const endpoint = `api/restaurant/${id}`;
     fetch(endpoint)
       .then(response => response.json())
@@ -58,17 +48,17 @@ export default class PhotoCarousel extends Component {
       .catch(error => console.error(error));
   }
 
-  handleClick = () => {
-    this.setState({
-      showModal: true,
-    });
-  };
+  // handleClick = () => {
+  //   this.setState({
+  //     showModal: true,
+  //   });
+  // };
 
-  handleClickClose = () => {
-    this.setState({
-      showModal: false,
-    });
-  };
+  // handleClickClose = () => {
+  //   this.setState({
+  //     showModal: false,
+  //   });
+  // };
 
   render() {
     const { mediaData } = this.state;
