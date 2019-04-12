@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Photo from './Photo';
+import Modal from './Modal';
 import '../../dist/style.css';
 
 const imgStyle = {
@@ -85,6 +87,7 @@ export default class PhotoCarousel extends Component {
             style={{ minWidth: '0', margin: '2px' }}
           >
             <img src={image} alt="" style={imgColStyle} />
+            <img src={mediaData[index + 1]} alt="" style={imgColStyle} />
           </div>
         );
       }
