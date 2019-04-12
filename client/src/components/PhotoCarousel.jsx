@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Photo from './Photo';
+import Modal from './Modal';
 import '../../dist/style.css';
 
 const imgStyle = {
