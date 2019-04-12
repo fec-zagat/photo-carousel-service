@@ -16,6 +16,16 @@ app.use(
   express.static(path.join(__dirname, '../client/dist')),
 );
 
+// app.get('api/restaurant/:id', (req, res) => {
+//   searchById({ id: req.params.id }, (err, result) => {
+//     if (err) {
+//       res.sendStatus(500);
+//     } else {
+//       res.status(200).send(result);
+//     }
+//   });
+// });
+
 app.get('/restaurant/:id', (req, res) => {
   searchById({ id: req.params.id }, (err, result) => {
     if (err) {

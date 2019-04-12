@@ -45,6 +45,7 @@ export default class PhotoCarousel extends Component {
     const path = window.location.pathname;
     const id = path.split('-')[2].split('/')[0];
     const endpoint = `http://localhost:3002/restaurant/${id}`;
+    // const endpoint = `api/restaurant/${id}`;
     fetch(endpoint)
       .then(response => response.json())
       .then((results) => {
@@ -85,6 +86,7 @@ export default class PhotoCarousel extends Component {
             style={{ minWidth: '0', margin: '2px' }}
           >
             <img src={image} alt="" style={imgColStyle} />
+            <img src={mediaData[index + 1]} alt="" style={imgColStyle} />
           </div>
         );
       }
